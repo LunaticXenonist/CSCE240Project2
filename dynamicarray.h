@@ -1,19 +1,23 @@
 // Copyright 2026 started by bhipp, finished by cmg43 and jabak
 
+#include<iostream>
+using std::ostream;
 
 class DynamicArray {
 
-  friend ostream& operator << (ostream&, DynamicArray) const;
+  friend ostream& operator << (ostream&, DynamicArray);
 
  public:
 
   explicit DynamicArray(int size = 1);
 
-  explicit DynamicArray(DynamicArray);
+  explicit DynamicArray(const DynamicArray&);
+
+	DynamicArray& operator = (const DynamicArray&);
 
   static void SetDelimiter(char);
 
-  static char GetDelimiter() const;
+  static char GetDelimiter();
 
   bool operator == (DynamicArray&) const;
 
