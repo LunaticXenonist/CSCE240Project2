@@ -2,8 +2,36 @@
 
 
 class DynamicArray {
+
+  friend ostream& operator << (ostream&, DynamicArray) const;
+
  public:
 
+  explicit DynamicArray(int size = 1);
+
+  explicit DynamicArray(DynamicArray);
+
+  static void SetDelimiter(char);
+
+  static char GetDelimiter() const;
+
+  bool operator == (DynamicArray&) const;
+
+  int GetSize() const;
+
+  void SetSize(int, bool copy = true);
+
+  bool AllUnique() const;
+
+  int RemoveAll(int);
+
+  int FindAndReplace(int, int);
+
+  void RemoveDuplicates();
+
+  void Sort(bool desc = false);
+
+  ~DynamicArray();
 
   // version that allows one to use the operator in a non-constant setting
   // to update the values in the array
