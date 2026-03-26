@@ -1,3 +1,5 @@
+// Copyright 2026 started by bhipp, finished by cmg43 and jabak
+
 
 class DynamicArray {
  public:
