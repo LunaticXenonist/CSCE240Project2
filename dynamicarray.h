@@ -5,7 +5,7 @@ using std::ostream;
 
 class DynamicArray {
 
-  friend ostream& operator << (ostream&, DynamicArray);
+  friend ostream& operator << (ostream&, const DynamicArray);
 
  public:
 
@@ -13,7 +13,7 @@ class DynamicArray {
 
   explicit DynamicArray(const DynamicArray&);
 
-	DynamicArray& operator = (const DynamicArray&);
+	DynamicArray& operator = (const DynamicArray);
 
   static void SetDelimiter(char);
 
