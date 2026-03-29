@@ -49,8 +49,16 @@ class DynamicArray {
 		return delimiter_;
 	}
 
-  bool DynamicArray::operator == (DynamicArray&) const {
-		
+  bool DynamicArray::operator == (const DynamicArray& other) const {
+		if ( size_ != other.GetSize() ) {
+			return false;
+		}
+		for ( int i = 0; i < size_; ++i ) {
+			if ( values_[i] != other[i] ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
   int DynamicArray::GetSize() const {
@@ -65,11 +73,11 @@ class DynamicArray {
 	
 	}
 
-  int DynamicArray::RemoveAll(int) {
+  int DynamicArray::RemoveAll(int target) {
 
 	}
 
-  int DynamicArray::FindAndReplace(int, int) {
+  int DynamicArray::FindAndReplace(int target, int new) {
 
 	}
 
@@ -82,7 +90,7 @@ class DynamicArray {
 	}
 
   ~DynamicArray() {
-
+		delete[] values_;
 	}    
 
  private:
