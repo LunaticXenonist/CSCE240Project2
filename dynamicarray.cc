@@ -4,25 +4,23 @@
 using std::ostream;
 #include"dyanimcarray.h"
 
-class DynamicArray {
 
-  friend ostream& DynamicArray::operator << (ostream& whereto, const DynamicArray object) {
-		for ( int i = 0; i < object.size_; ++i ) {
+  ostream& DynamicArray::operator << (ostream& whereto, const DynamicArray object) {
+    for ( int i = 0; i < object.size_; ++i ) {
 			whereto << object[i] << delimiter_;
 		}
 		return whereto;
 	}
 
- public:
 
-  explicit DynamicArray::DynamicArray(int size = 1) size_ = 1 {
+  DynamicArray::DynamicArray(int size = 1) size_ = 1 {
 		if ( size > 0 ) {
 			size_ = size;
 		}
 		values_ = new int[size_] {0};
 	}
 
-  explicit DynamicArray::DynamicArray(const DynamicArray other) {
+  DynamicArray::DynamicArray(const DynamicArray other) {
 		size_ = other.GetSize();
 		values_ = new int[size_] {0};
 		for ( int i = 0; i < size_; ++i ) {
@@ -41,11 +39,11 @@ class DynamicArray {
 	}
 
 
-  static void DynamicArray::SetDelimiter(char delimiter) {
+  void DynamicArray::SetDelimiter(char delimiter) {
 		delimiter_ = delimiter;
 	}
 
-  static char DynamicArray::GetDelimiter() {
+  char DynamicArray::GetDelimiter() {
 		return delimiter_;
 	}
 
@@ -70,7 +68,18 @@ class DynamicArray {
 	}
 
   bool DynamicArray::AllUnique() const {
-	
+    int count = 0;
+	  for (int i = 0; i < this.GetSize(); ++i) {
+      for (int j = 0; i < this.GetSize(); ++j) {
+        if (this[i] == this[j]) {
+          ++count;
+        }
+        if (count <= 2)
+          return false;
+      }
+      count = 0;
+    }
+    return true;
 	}
 
   int DynamicArray::RemoveAll(int target) {
