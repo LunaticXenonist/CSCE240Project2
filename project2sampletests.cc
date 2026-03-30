@@ -10,9 +10,9 @@ int main() {
   int s = 10;
   DynamicArray a(s);
   cout << "Initial array of " << s << " elements: " << a << endl;
-  DynamicArray::SetDelimeter(',');
+  DynamicArray::SetDelimiter(','); // fix spelling
   cout << "Here they are with commas between the values " << a << endl;
-  DynamicArray::SetDelimeter(' ');
+  DynamicArray::SetDelimiter(' '); // fix spelling
   cout << "Enter " << s << " new values to hold in the array: ";
   for ( int i = 0; i < a.GetSize(); ++i )
     cin >> a[i];
