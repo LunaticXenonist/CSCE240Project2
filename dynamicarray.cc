@@ -22,7 +22,7 @@ using std::ostream;
 
   DynamicArray::DynamicArray(const DynamicArray other) {
 		size_ = other.GetSize();
-		values_ = new int[size_] {0};
+		values_ = new int[size_];
 		for ( int i = 0; i < size_; ++i ) {
 			values_[i] = other[i];
 		}
@@ -64,18 +64,27 @@ using std::ostream;
 	}
 
   void DynamicArray::SetSize(int size, bool copy = true) {
-		
+		int * temp = values_;
+    values_ = new int[size];
+    if (copy) {
+      int smallSize = size < size_ ? size : size_;
+      for (int i = 0; i < smallSize; ++i) {
+        values_[i] = temp[i];
+      }
+    }
+    size_ = size;
+    delete temp;
 	}
 
   bool DynamicArray::AllUnique() const {
     int count = 0;
-	  for (int i = 0; i < this.GetSize(); ++i) {
-      for (int j = 0; i < this.GetSize(); ++j) {
-        if (this[i] == this[j]) {
+	  for (int i = 0; i < size_; ++i) {
+      for (int j = 0; i < size_; ++j) {
+        if (values_[i] == values_[j]) {
           ++count;
+          if (count >= 2)
+            return false;
         }
-        if (count <= 2)
-          return false;
       }
       count = 0;
     }
