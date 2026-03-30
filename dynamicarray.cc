@@ -17,7 +17,7 @@ using std::ostream;
 		if ( size > 0 ) {
 			size_ = size;
 		}
-		values_ = new int[size_] {0};
+		values_ = new int[size_]();
 	}
 
   DynamicArray::DynamicArray(const DynamicArray other) {
@@ -31,7 +31,7 @@ using std::ostream;
 	DynamicArray& operator = (const DynamicArray& other) {
 		delete[] values_;
 		size_ = other.GetSize();
-		values_ = new int[size_] {0};
+		values_ = new int[size_]();
 		for ( int i = 0; i < size_; ++i ) {
 			values_[i] = other[i];
 		}
@@ -65,7 +65,12 @@ using std::ostream;
 
   void DynamicArray::SetSize(int size, bool copy = true) {
 		int * temp = values_;
-    values_ = new int[size];
+    if (size <= 0) {
+      values = new int[1]();
+      delete temp;
+      return;
+    }
+    values_ = new int[size]();
     if (copy) {
       int smallSize = size < size_ ? size : size_;
       for (int i = 0; i < smallSize; ++i) {
@@ -92,7 +97,17 @@ using std::ostream;
 	}
 
   int DynamicArray::RemoveAll(int target) {
-
+    int count = 0;
+    for (int i = 0; i < size_; ++i) {
+      if (values[i] == target) {
+        ++count;
+        for (int j = i; j < size_ - 1; ++j)
+          values[j] = values[j + 1];
+        --i;
+        SetSize(size_ - 1);
+      }
+    }
+    return count; // checking for 0 size arrays is done in SetSize
 	}
 
   int DynamicArray::FindAndReplace(int target, int new) {
