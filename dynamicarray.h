@@ -60,3 +60,5 @@ class DynamicArray {
   static char delimiter_; // (for separator used by <<)
 };
 
+bool contains(int*, int, int);
+

@@ -110,16 +110,54 @@ using std::ostream;
     return count; // checking for 0 size arrays is done in SetSize
 	}
 
-  int DynamicArray::FindAndReplace(int target, int new) {
-
+  int DynamicArray::FindAndReplace(int target, int replace) {
+    int count = 0;
+    for (int i = 0; i < size_; ++i) {
+      if (values_[i] == target) {
+        values_[i] = replace;
+        ++count;
+      }
+    } 
+    return count;
 	}
 
-  void DynamicArray::RemoveDuplicates() {
+// small helper function
+bool contains(int * ptr, int size, int item) {
+  for (int i = 0; i < size; ++i) {
+    if (item == ptr[i])
+      return true;
+  }
+  return false;
+}
 
+  void DynamicArray::RemoveDuplicates() {
+    int * unique = new int[size_] {values_[0]}; // initialize the first value of the unique to values_[0] and the rest to 0
+    int uniqueSize = 1;
+    for (int i = 1; i < size_; ++i) {
+      if (contains(unique, uniqueSize, values[i])) {
+        for (int j = i; j < size_ - 1; ++j)
+          values[j] = values[j + 1];
+        --i;
+        SetSize(size_ - 1);
+      } else {
+        unique[size] = values[i];
+        ++uniqueSize;
+      }
+    }
+    delete unique; // fix leak
 	}
 
   void DynamicArray::Sort(bool desc = false) {
-
+    int temp;
+    for (int i = 0; i < size_, ++i) {
+      for (int j = i; j < size_ - 1, ++j) {
+        if ((desc ? (values_[j] < values_[j + 1]) : (values_[j] > values_[j + 1]))) {
+          temp = values_[j + 1];
+          values_[j + 1] = values_[j];
+          values_[j] = temp;
+        }
+      }
+    }
 	}
 
   ~DynamicArray() {
