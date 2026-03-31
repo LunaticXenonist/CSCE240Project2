@@ -1,19 +1,20 @@
 // Copyright 2026 started by bhipp, finished by cmg43 and jabak
 
+#ifndef DYNAMICARRAY_H_
+#define DYNAMICARRAY_H_
+
 #include<iostream>
 using std::ostream;
 
 class DynamicArray {
-
   friend ostream& operator << (ostream&, const DynamicArray&);
 
  public:
-
   explicit DynamicArray(int size = 1);
 
   explicit DynamicArray(const DynamicArray&);
 
-	DynamicArray& operator = (const DynamicArray&);
+  DynamicArray& operator = (const DynamicArray&);
 
   static void SetDelimiter(char);
 
@@ -51,14 +52,15 @@ class DynamicArray {
     if ( i >= 0 && i < size_ ) return values_[i];
     if ( i < 0 ) return values_[0];
     return values_[size_ - 1];
-  }   
-    
+  }
+
 
  private:
   int size_;
   int * values_;
-  static char delimiter_; // (for separator used by <<)
+  static char delimiter_;  // (for separator used by <<)
 };
 
 bool contains(int*, int, int);
 
+#endif
