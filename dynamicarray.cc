@@ -85,7 +85,7 @@ char DynamicArray::delimiter_ = ' '; // default to space
   bool DynamicArray::AllUnique() const {
     int count = 0;
 	  for (int i = 0; i < size_; ++i) {
-      for (int j = 0; i < size_; ++j) {
+      for (int j = 0; j < size_; ++j) {
         if (values_[i] == values_[j]) {
           ++count;
           if (count >= 2)
@@ -151,7 +151,7 @@ bool contains(int * ptr, int size, int item) {
   void DynamicArray::Sort(bool desc) {
     int temp;
     for (int i = 0; i < size_; ++i) {
-      for (int j = i; j < (size_ - 1); ++j) {
+      for (int j = 0; j < (size_ - i - 1); ++j) {
         if ((desc ? (values_[j] < values_[j + 1]) : (values_[j] > values_[j + 1]))) {
           temp = values_[j + 1];
           values_[j + 1] = values_[j];
