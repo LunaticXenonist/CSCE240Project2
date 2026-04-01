@@ -163,6 +163,19 @@ bool contains(int * ptr, int size, int item) {
     }
   }
 
+// Extra features
+void DynamicArray::operator + (int scalar) {
+	for ( int i = 0; i < size_; ++i ) {
+		values_[i] += scalar;
+	}
+}
+
+void DynamicArray::operator * (int scalar) {
+	for ( int i = 0; i < size_; ++i ) {
+		values_[i] *= scalar;
+	}
+}
+
 DynamicArray::~DynamicArray() {
     delete[] values_;
 }

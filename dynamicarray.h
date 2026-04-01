@@ -36,6 +36,11 @@ class DynamicArray {
 
   void Sort(bool desc = false);
 
+	// Extra features
+	void operator + (int);
+
+	void operator * (int);
+
   ~DynamicArray();
 
   // version that allows one to use the operator in a non-constant setting
