@@ -79,7 +79,7 @@ char DynamicArray::delimiter_ = ' ';  // default to space
       }
     }
     size_ = size;
-    delete temp;
+    delete [] temp;
   }
 
   bool DynamicArray::AllUnique() const {
@@ -165,4 +165,4 @@ bool contains(int * ptr, int size, int item) {
 
 DynamicArray::~DynamicArray() {
     delete[] values_;
-  }
+}
