@@ -63,4 +63,4 @@ class DynamicArray {
 
 bool contains(int*, int, int);
 
-#endif
+#endif  // DYNAMICARRAY_H_
