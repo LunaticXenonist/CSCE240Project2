@@ -10,9 +10,9 @@ int main() {
   int s = 10;
   DynamicArray a(s);
   cout << "Initial array of " << s << " elements: " << a << endl;
-  DynamicArray::SetDelimiter(','); // fix spelling
+  DynamicArray::SetDelimiter(',');  // fix spelling
   cout << "Here they are with commas between the values " << a << endl;
-  DynamicArray::SetDelimiter(' '); // fix spelling
+  DynamicArray::SetDelimiter(' ');  // fix spelling
   cout << "Enter " << s << " new values to hold in the array: ";
   for ( int i = 0; i < a.GetSize(); ++i )
     cin >> a[i];
@@ -87,6 +87,21 @@ int main() {
   acopy.Sort(true);
   cout << "Here is the arry after sorting the values in descending order: "
        << acopy << endl;
+
+  cout << "\n\nEnter y (actually any non-whitespace character will do) "
+       << "when you're ready to see some new operator tests. " << endl;
+  cin >> keep_vals;
+  acopy = kOriginal;
+  cout << "\n\nHere's a copy of the array with the values you entered at the "
+       << "very beginning: " << acopy << endl;
+  acopy + 6;
+  cout << "Here is the array after adding 6 using the new + operator: "
+       << acopy << endl;
+  acopy * 7;
+  cout << "Here is the array after multiplying by 7 using the new * operator: "
+       << acopy << endl;
+
+
 
   return 0;
 }

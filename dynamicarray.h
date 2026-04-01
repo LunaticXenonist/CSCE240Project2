@@ -36,10 +36,10 @@ class DynamicArray {
 
   void Sort(bool desc = false);
 
-	// Extra features
-	void operator + (int);
+  // Extra features
+  void operator + (int);
 
-	void operator * (int);
+  void operator * (int);
 
   ~DynamicArray();
 
