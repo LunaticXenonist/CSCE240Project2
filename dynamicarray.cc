@@ -176,6 +176,46 @@ void DynamicArray::operator * (int scalar) {
   }
 }
 
+bool DynamicArray::operator < (const DynamicArray& other) const {
+  int sum1 = 0;
+  int sum2 = 0;
+  for (int i = 0; i < size_; ++i)
+    sum1 += values_[i];
+  for (int i = 0; i < other.size_; ++i)
+    sum2 += other.values_[i];
+  return sum1 < sum2;
+}
+
+bool DynamicArray::operator > (const DynamicArray& other) const {
+  int sum1 = 0;
+  int sum2 = 0;
+  for (int i = 0; i < size_; ++i)
+    sum1 += values_[i];
+  for (int i = 0; i < other.size_; ++i)
+    sum2 += other.values_[i];
+  return sum1 > sum2;
+}
+
+bool DynamicArray::operator <= (const DynamicArray& other) const {
+  int sum1 = 0;
+  int sum2 = 0;
+  for (int i = 0; i < size_; ++i)
+    sum1 += values_[i];
+  for (int i = 0; i < other.size_; ++i)
+    sum2 += other.values_[i];
+  return sum1 <= sum2;
+}
+
+bool DynamicArray::operator >= (const DynamicArray& other) const {
+  int sum1 = 0;
+  int sum2 = 0;
+  for (int i = 0; i < size_; ++i)
+    sum1 += values_[i];
+  for (int i = 0; i < other.size_; ++i)
+    sum2 += other.values_[i];
+  return sum1 >= sum2;
+}
+
 DynamicArray::~DynamicArray() {
     delete[] values_;
 }

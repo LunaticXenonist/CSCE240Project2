@@ -41,6 +41,15 @@ class DynamicArray {
 
   void operator * (int);
 
+  bool operator < (const DynamicArray&) const;
+
+  bool operator > (const DynamicArray&) const;
+
+  bool operator <= (const DynamicArray&) const;
+
+  bool operator >= (const DynamicArray&) const;
+
+
   ~DynamicArray();
 
   // version that allows one to use the operator in a non-constant setting

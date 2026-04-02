@@ -101,6 +101,26 @@ int main() {
   cout << "Here is the array after multiplying by 7 using the new * operator: "
        << acopy << endl;
 
+  cout << "\n\nEnter y (actually any non-whitespace character will do) "
+       << "when you're ready to compare some arrays. " << endl;
+  cin >> keep_vals;
+  acopy = kOriginal;
+  int newArrSize = 8;
+  DynamicArray a2(newArrSize);
+  cout << "\n\nHere's a copy of the array with the values you entered at the "
+       << "very beginning: " << acopy << endl;
+  cout << "Enter " << newArrSize << " new values to hold in a second array: ";
+  for ( int i = 0; i < a2.GetSize(); ++i )
+    cin >> a2[i];
+  cout << "New Array: " << a2 << endl;
+  cout << "Is the old array sum less than the new array sum ?: "
+       << ((acopy < a2) ? "True" : "False") << endl;
+  cout << "Is the old array sum less than or equal to the new array sum?: "
+       << ((acopy <= a2) ? "True" : "False") << endl;
+  cout << "Is the old array sum greater than the new array sum?: "
+       << ((acopy > a2) ? "True" : "False") << endl;
+  cout << "Is the old array sum greater than or equal to the new array sum?: "
+       << ((acopy >= a2) ? "True" : "False") << endl;
 
 
   return 0;
